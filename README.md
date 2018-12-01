@@ -36,3 +36,17 @@ var params = ['Apple','Orange','Grapes','Banana'];
     autofill:false
  });
 </pre>
+
+## Fetch Suggestions using Ajax
+
+If you want to get suggestion from a server. You can provide the url
+
+<pre>
+var params = ['Apple','Orange','Grapes','Banana'];
+ $("#auto").autocomplete({  
+    autofill:false,
+    url: "PASTE YOUR URL HERE"
+ });
+</pre>
+
+If both `array` and `url` are passed as parameter then only `array` will be consider for suggestion. So if you want data from `url` you have to skip the `array` parameter.

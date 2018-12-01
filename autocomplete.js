@@ -5,8 +5,23 @@ $('head').append('<style>.autoselected{background-color:#3390FF;color:#fff} #aut
 });
 
 jQuery.fn.autocomplete = function(options){
-var target = $(this);    
-var autofill = options.autofill!=undefined?options.autofill:true;    
+
+//setting default values if parameters not passed    
+var target = $(this);        
+var data = options.array;
+var autofill = options.autofill!=undefined?options.autofill:true;  
+var dataURL = options.url;       
+
+if(!data && !(!dataURL)){
+    $.ajax({
+        url:dataURL,
+        type:"get",
+        data:'',
+        success: function(response){
+            data = JSON.parse(response+"");
+        }
+    });
+}    
     
 target.attr('autocomplete','off');
 target.on('focusin',function(){
@@ -16,8 +31,7 @@ target.on('focusin',function(){
     
   $("#autocompletesuggestions").css({"width":width+"px","height":"auto","top":position.top+height+"px","left":position.left+"px"});
  }).on('keyup',function(e){
-    console.log(e);
-    this.completeArray = jQuery.grep(options.array, function( item ) {
+    this.completeArray = jQuery.grep(data, function( item ) {
       return item.toLowerCase().includes(target.val().toLowerCase());
     });
     var html = "";
@@ -81,7 +95,6 @@ function checkautoFill(e){
     else
         return true;
 }
-
 
 
 };
