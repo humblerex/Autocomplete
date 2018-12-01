@@ -24,3 +24,15 @@ var params = ['Apple','Orange','Grapes','Banana'];
     array: params
  });
 </pre>
+
+## Allow autofill
+
+You can choose if you want to auto fill the input field. By deafult the param is set to true.
+
+<pre>
+var params = ['Apple','Orange','Grapes','Banana'];
+ $("#auto").autocomplete({  
+    array: params,
+    autofill:false
+ });
+</pre>
