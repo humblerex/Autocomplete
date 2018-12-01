@@ -42,7 +42,6 @@ var params = ['Apple','Orange','Grapes','Banana'];
 If you want to get suggestion from a server. You can provide the url
 
 <pre>
-var params = ['Apple','Orange','Grapes','Banana'];
  $("#auto").autocomplete({  
     autofill:false,
     url: "PASTE YOUR URL HERE"
